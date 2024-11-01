@@ -147,7 +147,7 @@
 }
 
 .header {
-  padding: 20px; /* Add padding around the header */
+  padding: 5px; /* Add padding around the header */
   width: 100%; /* Make the header full width */
   display: flex; /* Use flexbox for centering the image */
   justify-content: center; /* Center the image horizontally */
