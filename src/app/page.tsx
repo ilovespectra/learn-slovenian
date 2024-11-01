@@ -81,13 +81,13 @@ export default function Home() {
   const [currentPairIndex, setCurrentPairIndex] = useState(0);
   const [isOnState, setIsOnState] = useState(true);
   const [volume, setVolume] = useState(1.0);
-  const audioRef = useRef(null);
+  const audioRef = useRef<HTMLAudioElement | null>(null); // Explicitly type the ref
 
   const toggleImage = () => {
     setIsOnState(!isOnState);
 
     // Play the appropriate audio file based on the new state
-    if (audioRef.current) {
+    if (audioRef.current instanceof HTMLAudioElement) {
       audioRef.current.src = isOnState ? pairs[currentPairIndex].audioOff : pairs[currentPairIndex].audioOn;
       audioRef.current.volume = volume;
       audioRef.current.play();
@@ -104,13 +104,14 @@ export default function Home() {
     setCurrentPairIndex((prevIndex) => (prevIndex - 1 + pairs.length) % pairs.length);
   };
 
-  const handleVolumeChange = (e) => {
-    const newVolume = e.target.value;
+  const handleVolumeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const newVolume = parseFloat(e.target.value);
     setVolume(newVolume);
-    if (audioRef.current) {
+    if (audioRef.current instanceof HTMLAudioElement) {
       audioRef.current.volume = newVolume;
     }
   };
+  
 
   const { imgOn, imgOff, textOn, textOff } = pairs[currentPairIndex];
 
