@@ -173,10 +173,10 @@ const OppositePairs = [
   { 
     english: 'Off', 
     slovenian: 'Izklopljen', 
-    imgOn: '/off.png', 
-    imgOff: '/on.png', 
-    textOn: 'ugasni luč', 
-    textOff: 'prižgi luč',
+    imgOn: '/prizgiluč.png', 
+    imgOff: '/ugasniluč.png', 
+    textOn: 'prižgi luč', 
+    textOff: 'ugasni luč',
     audioOn: '/ugasni.wav', 
     audioOff: '/prizgi.wav' 
   },
@@ -254,7 +254,7 @@ const OppositePairs = [
 
 
 export default function Home() {
-  const [currentCategory, setCurrentCategory] = useState<Pair[]>(OppositePairs); // Use Pair[] type
+  const [currentCategory, setCurrentCategory] = useState<Pair[]>(AnimalsPairs); // Use Pair[] type
   const [currentPairIndex, setCurrentPairIndex] = useState(0);
   const [isOnState, setIsOnState] = useState(true);
   const [volume, setVolume] = useState(1.0);
@@ -300,6 +300,16 @@ export default function Home() {
 
   return (
     <div className={styles.container}>
+       {/* Header with learn.png */}
+       <header className={styles.header}>
+        <Image 
+          src="/learn.png" // Adjust the path if necessary
+          alt="Learn" 
+          width={500} // Set a base width for the image
+          height={100} // Adjust height as needed
+          className={styles.headerImage} // Add your styling here
+        />
+      </header>
       <div className={styles.menuBar}>
   <button onClick={() => handleCategoryChange(AnimalsPairs)} className={styles.menuButton}>
     <Image src="/animals.png" alt="Animals" width={90} height={90} />
