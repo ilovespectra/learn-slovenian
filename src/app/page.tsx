@@ -210,6 +210,16 @@ const OppositePairs = [
     audioOn: '/gor.wav', 
     audioOff: '/dol.wav' 
   },
+  { 
+    english: 'thanks', 
+    slovenian: 'please', 
+    imgOn: '/hvala.png', 
+    imgOff: '/prosim.png', 
+    textOn: 'hvala', 
+    textOff: 'prosim',
+    audioOn: '/hvala.wav', 
+    audioOff: '/prosim.wav' 
+  },
   // { 
   //   english: 'uho', 
   //   slovenian: 'oko', 
