@@ -104,13 +104,13 @@ export default function Home() {
     setCurrentPairIndex((prevIndex) => (prevIndex - 1 + pairs.length) % pairs.length);
   };
 
-  const handleVolumeChange = (e) => {
-    const newVolume = e.target.value;
-    setVolume(newVolume);
-    if (audioRef.current) {
-      audioRef.current.volume = newVolume;
-    }
-  };
+  // const handleVolumeChange = (e) => {
+  //   const newVolume = e.target.value;
+  //   setVolume(newVolume);
+  //   if (audioRef.current) {
+  //     audioRef.current.volume = newVolume;
+  //   }
+  // };
 
   const { imgOn, imgOff, textOn, textOff } = pairs[currentPairIndex];
 
