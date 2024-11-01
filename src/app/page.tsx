@@ -104,13 +104,13 @@ export default function Home() {
     setCurrentPairIndex((prevIndex) => (prevIndex - 1 + pairs.length) % pairs.length);
   };
 
-  // const handleVolumeChange = (e) => {
-  //   const newVolume = e.target.value;
-  //   setVolume(newVolume);
-  //   if (audioRef.current) {
-  //     audioRef.current.volume = newVolume;
-  //   }
-  // };
+  const handleVolumeChange = (e) => {
+    const newVolume = e.target.value;
+    setVolume(newVolume);
+    if (audioRef.current) {
+      audioRef.current.volume = newVolume;
+    }
+  };
 
   const { imgOn, imgOff, textOn, textOff } = pairs[currentPairIndex];
 
@@ -138,7 +138,7 @@ export default function Home() {
       </div>
 
       {/* Volume Control Slider */}
-      {/* <div className={styles.volumeControl}>
+      <div className={styles.volumeControl}>
         <label>Volume:</label>
         <input
           type="range"
@@ -148,7 +148,7 @@ export default function Home() {
           value={volume}
           onChange={handleVolumeChange}
         />
-      </div> */}
+      </div>
 
       {/* Audio Element */}
       <audio ref={audioRef} />
