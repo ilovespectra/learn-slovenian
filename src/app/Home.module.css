@@ -95,7 +95,7 @@
     padding: 10px;
     background-color: white;
     border: 3px solid #ccc;
-    border-radius: 60px;
+    border-radius: 70px;
     margin-bottom: 20px;
     flex-wrap: wrap; /* Allow wrapping on smaller screens */
     justify-content: center; /* Center on small screens */
