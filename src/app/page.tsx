@@ -119,6 +119,46 @@ const BodyPairs: Pair[] = [
     audioOff: '/mouth.wav' 
   },
   { 
+    english: 'back', 
+    slovenian: 'hrbet', 
+    imgOn: '/hrbet.png', 
+    imgOff: '/hrbet.png', 
+    textOn: 'hrbet', 
+    textOff: 'back',
+    audioOn: '/hrbet.wav', 
+    audioOff: '/back.wav' 
+  },
+  { 
+    english: 'belly', 
+    slovenian: 'trebuh', 
+    imgOn: '/trebuh.png', 
+    imgOff: '/trebuh.png', 
+    textOn: 'trebuh', 
+    textOff: 'belly',
+    audioOn: '/trebuh.wav', 
+    audioOff: '/belly.wav' 
+  },
+  { 
+    english: 'nose', 
+    slovenian: 'nos', 
+    imgOn: '/nos.png', 
+    imgOff: '/nos.png', 
+    textOn: 'nos', 
+    textOff: 'nose',
+    audioOn: '/nos.wav', 
+    audioOff: '/nose.wav' 
+  },
+  { 
+    english: 'hair', 
+    slovenian: 'lase', 
+    imgOn: '/lase.png', 
+    imgOff: '/lase.png', 
+    textOn: 'lase', 
+    textOff: 'hair',
+    audioOn: '/lase.wav', 
+    audioOff: '/hair.wav' 
+  },
+  { 
     english: 'arm', 
     slovenian: 'roka', 
     imgOn: '/roka.png', 
