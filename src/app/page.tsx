@@ -78,6 +78,56 @@ const AnimalsPairs: Pair[] = [
     audioOn: '/mačka.wav', 
     audioOff: '/cat.wav' 
   },
+  { 
+    english: 'horse', 
+    slovenian: 'konj', 
+    imgOn: '/konj.png', 
+    imgOff: '/konj.png', 
+    textOn: 'konj', 
+    textOff: 'horse',
+    audioOn: '/konj.wav', 
+    audioOff: '/horse.wav' 
+  },
+  { 
+    english: 'duck', 
+    slovenian: 'raca', 
+    imgOn: '/raca.png', 
+    imgOff: '/raca.png', 
+    textOn: 'raca', 
+    textOff: 'duck',
+    audioOn: '/raca.wav', 
+    audioOff: '/duck.wav' 
+  },
+  { 
+    english: 'chicken', 
+    slovenian: 'piščanec', 
+    imgOn: '/piščanec.png', 
+    imgOff: '/piščanec.png', 
+    textOn: 'piščanec', 
+    textOff: 'chicken',
+    audioOn: '/piščanec.wav', 
+    audioOff: '/chicken.wav' 
+  },
+  { 
+    english: 'cow', 
+    slovenian: 'krava', 
+    imgOn: '/krava.png', 
+    imgOff: '/krava.png', 
+    textOn: 'krava', 
+    textOff: 'cow',
+    audioOn: '/krava.wav', 
+    audioOff: '/cow.wav' 
+  },
+  { 
+    english: 'pig', 
+    slovenian: 'prašič', 
+    imgOn: '/prašič.png', 
+    imgOff: '/prašič.png', 
+    textOn: 'prašič', 
+    textOff: 'pig',
+    audioOn: '/prašič.wav', 
+    audioOff: '/pig.wav' 
+  },
 ];
 const AlphabetPairs: Pair[] = [
   { english: 'A', slovenian: 'A', imgOn: '/a.png', imgOff: '/a.png', textOn: 'A', textOff: 'a', audioOn: '/a.wav', audioOff: '/a.wav' },
@@ -292,33 +342,53 @@ const OppositePairs = [
   // },
 ];
 
-
 export default function Home() {
-  const [currentCategory, setCurrentCategory] = useState<Pair[]>(AnimalsPairs); // Use Pair[] type
+  const [currentCategory, setCurrentCategory] = useState<Pair[]>(AnimalsPairs);
   const [currentPairIndex, setCurrentPairIndex] = useState(0);
   const [isOnState, setIsOnState] = useState(true);
   const [volume, setVolume] = useState(1.0);
   const audioRef = useRef<HTMLAudioElement | null>(null);
 
+  const playAudio = async (audioSource: string) => {
+    if (audioRef.current instanceof HTMLAudioElement) {
+      // Pause and reset audio first to avoid interruption errors
+      audioRef.current.pause();
+      audioRef.current.src = audioSource;
+      audioRef.current.volume = volume;
+      
+      try {
+        await audioRef.current.load();
+        await audioRef.current.play();
+      } catch (error) {
+        console.error("Audio play error:", error);
+      }
+    }
+  };
+
   const toggleImage = () => {
     setIsOnState(!isOnState);
-    if (audioRef.current instanceof HTMLAudioElement) {
-      audioRef.current.src = isOnState
-        ? currentCategory[currentPairIndex].audioOff
-        : currentCategory[currentPairIndex].audioOn;
-      audioRef.current.volume = volume;
-      audioRef.current.play();
-    }
+    const audioSource = isOnState
+      ? currentCategory[currentPairIndex].audioOff
+      : currentCategory[currentPairIndex].audioOn;
+    playAudio(audioSource);
   };
 
   const goToNextPair = () => {
     setIsOnState(true);
-    setCurrentPairIndex((prevIndex) => (prevIndex + 1) % currentCategory.length);
+    setCurrentPairIndex((prevIndex) => {
+      const newIndex = (prevIndex + 1) % currentCategory.length;
+      playAudio(currentCategory[newIndex].audioOn); // Play the audio for the new pair
+      return newIndex;
+    });
   };
 
   const goToPreviousPair = () => {
     setIsOnState(true);
-    setCurrentPairIndex((prevIndex) => (prevIndex - 1 + currentCategory.length) % currentCategory.length);
+    setCurrentPairIndex((prevIndex) => {
+      const newIndex = (prevIndex - 1 + currentCategory.length) % currentCategory.length;
+      playAudio(currentCategory[newIndex].audioOn); // Play the audio for the new pair
+      return newIndex;
+    });
   };
 
   const handleVolumeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -329,10 +399,12 @@ export default function Home() {
     }
   };
 
-  // Define the parameter with Pair[] type
   const handleCategoryChange = (categoryPairs: Pair[]) => {
     setCurrentCategory(categoryPairs);
     setCurrentPairIndex(0);
+    setIsOnState(true);
+    // Play the first audio of the selected category
+    playAudio(categoryPairs[0].audioOn);
   };
 
   const currentPair = currentCategory[currentPairIndex];
@@ -340,30 +412,31 @@ export default function Home() {
 
   return (
     <div className={styles.container}>
-       {/* Header with learn.png */}
-       <header className={styles.header}>
-        <Image 
-          src="/learn.png" // Adjust the path if necessary
-          alt="Learn" 
-          width={500} // Set a base width for the image
-          height={100} // Adjust height as needed
-          className={styles.headerImage} // Add your styling here
+      {/* Header with learn.png */}
+      <header className={styles.header}>
+        <Image
+          src="/learn.png"
+          alt="Learn"
+          width={500}
+          height={100}
+          className={styles.headerImage}
         />
       </header>
       <div className={styles.menuBar}>
-  <button onClick={() => handleCategoryChange(AnimalsPairs)} className={styles.menuButton}>
-    <Image src="/animals.png" alt="Animals" width={90} height={90} />
-  </button>
-  <button onClick={() => handleCategoryChange(AlphabetPairs)} className={styles.menuButton}>
-    <Image src="/alphabet.png" alt="Alphabet" width={90} height={90} />
-  </button>
-  <button onClick={() => handleCategoryChange(BodyPairs)} className={styles.menuButton}>
-    <Image src="/body.png" alt="Body" width={90} height={90} />
-  </button>
-  <button onClick={() => handleCategoryChange(OppositePairs)} className={styles.menuButton}>
-    <Image src="/opposites.png" alt="Opposites" width={90} height={90} />
-  </button>
-</div>
+        <button onClick={() => handleCategoryChange(AnimalsPairs)} className={styles.menuButton}>
+          <Image src="/animals.png" alt="Animals" width={90} height={90} />
+        </button>
+        <button onClick={() => handleCategoryChange(AlphabetPairs)} className={styles.menuButton}>
+          <Image src="/alphabet.png" alt="Alphabet" width={90} height={90} />
+        </button>
+        <button onClick={() => handleCategoryChange(BodyPairs)} className={styles.menuButton}>
+          <Image src="/body.png" alt="Body" width={90} height={90} />
+        </button>
+        <button onClick={() => handleCategoryChange(OppositePairs)} className={styles.menuButton}>
+          <Image src="/opposites.png" alt="Opposites" width={90} height={90} />
+        </button>
+      </div>
+
       {/* Main Content */}
       {currentPair && (
         <div className={styles.card} onClick={toggleImage}>
