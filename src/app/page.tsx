@@ -18,16 +18,16 @@ interface Pair {
 
 // Arrays for each category using the Pair type
 const AnimalsPairs: Pair[] = [ 
-  { 
-    english: 'bunny', 
-    slovenian: 'zajec', 
-    imgOn: '/zajec.png', 
-    imgOff: '/zajec.png', 
-    textOn: 'zajec', 
-    textOff: 'bunny',
-    audioOn: '/zajec.wav', 
-    audioOff: '/bunny.wav' 
-  },
+  // { 
+  //   english: 'bunny', 
+  //   slovenian: 'zajec', 
+  //   imgOn: '/zajec.png', 
+  //   imgOff: '/zajec.png', 
+  //   textOn: 'zajec', 
+  //   textOff: 'bunny',
+  //   audioOn: '/zajec.wav', 
+  //   audioOff: '/bunny.wav' 
+  // },
   { 
     english: 'mouse', 
     slovenian: 'miš', 
@@ -38,26 +38,26 @@ const AnimalsPairs: Pair[] = [
     audioOn: '/miš.wav', 
     audioOff: '/mouse.wav' 
   },
-  { 
-    english: 'donkey', 
-    slovenian: 'osel', 
-    imgOn: '/osel.png', 
-    imgOff: '/osel.png', 
-    textOn: 'osel', 
-    textOff: 'donkey',
-    audioOn: '/osel.wav', 
-    audioOff: '/donkey.wav' 
-  },
-  { 
-    english: 'hamster', 
-    slovenian: 'hrček', 
-    imgOn: '/hrček.png', 
-    imgOff: '/hrček.png', 
-    textOn: 'hrček', 
-    textOff: 'hamster',
-    audioOn: '/hrček.wav', 
-    audioOff: '/hamster.wav' 
-  },
+  // { 
+  //   english: 'donkey', 
+  //   slovenian: 'osel', 
+  //   imgOn: '/osel.png', 
+  //   imgOff: '/osel.png', 
+  //   textOn: 'osel', 
+  //   textOff: 'donkey',
+  //   audioOn: '/osel.wav', 
+  //   audioOff: '/donkey.wav' 
+  // },
+  // { 
+  //   english: 'hamster', 
+  //   slovenian: 'hrček', 
+  //   imgOn: '/hrček.png', 
+  //   imgOff: '/hrček.png', 
+  //   textOn: 'hrček', 
+  //   textOff: 'hamster',
+  //   audioOn: '/hrček.wav', 
+  //   audioOff: '/hamster.wav' 
+  // },
   { 
     english: 'dog', 
     slovenian: 'pes', 
@@ -79,6 +79,26 @@ const AnimalsPairs: Pair[] = [
     audioOff: '/cat.wav' 
   },
   { 
+    english: 'giraffe', 
+    slovenian: 'žirafa', 
+    imgOn: '/žirafa.png', 
+    imgOff: '/žirafa.png', 
+    textOn: 'žirafa', 
+    textOff: 'giraffe',
+    audioOn: '/žirafa.wav', 
+    audioOff: '/giraffe.wav' 
+  },
+  { 
+    english: 'elephant', 
+    slovenian: 'slon', 
+    imgOn: '/slon.png', 
+    imgOff: '/slon.png', 
+    textOn: 'slon', 
+    textOff: 'elephant',
+    audioOn: '/slon.wav', 
+    audioOff: '/elephant.wav' 
+  },
+  { 
     english: 'horse', 
     slovenian: 'konj', 
     imgOn: '/konj.png', 
@@ -88,24 +108,24 @@ const AnimalsPairs: Pair[] = [
     audioOn: '/konj.wav', 
     audioOff: '/horse.wav' 
   },
-  { 
-    english: 'duck', 
-    slovenian: 'raca', 
-    imgOn: '/raca.png', 
-    imgOff: '/raca.png', 
-    textOn: 'raca', 
-    textOff: 'duck',
-    audioOn: '/raca.wav', 
-    audioOff: '/duck.wav' 
-  },
+  // { 
+  //   english: 'duck', 
+  //   slovenian: 'raca', 
+  //   imgOn: '/raca.png', 
+  //   imgOff: '/raca.png', 
+  //   textOn: 'raca', 
+  //   textOff: 'duck',
+  //   audioOn: '/raca.wav', 
+  //   audioOff: '/duck.wav' 
+  // },
   { 
     english: 'chicken', 
-    slovenian: 'piščanec', 
+    slovenian: 'kokoš', 
     imgOn: '/piščanec.png', 
     imgOff: '/piščanec.png', 
-    textOn: 'piščanec', 
+    textOn: 'kokoš', 
     textOff: 'chicken',
-    audioOn: '/piščanec.wav', 
+    audioOn: '/kokoš.wav', 
     audioOff: '/chicken.wav' 
   },
   { 
@@ -200,12 +220,12 @@ const BodyPairs: Pair[] = [
   },
   { 
     english: 'hair', 
-    slovenian: 'lase', 
-    imgOn: '/lase.png', 
-    imgOff: '/lase.png', 
-    textOn: 'lase', 
+    slovenian: 'lasje', 
+    imgOn: '/lasje.png', 
+    imgOff: '/lasje.png', 
+    textOn: 'lasje', 
     textOff: 'hair',
-    audioOn: '/lase.wav', 
+    audioOn: '/lasje.wav', 
     audioOff: '/hair.wav' 
   },
   { 
@@ -235,7 +255,7 @@ const BodyPairs: Pair[] = [
     imgOff: '/glava.png', 
     textOn: 'glava', 
     textOff: 'head',
-    audioOn: '/usta.wav', 
+    audioOn: '/glava.wav', 
     audioOff: '/head.wav' 
   },
   { 
