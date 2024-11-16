@@ -3,6 +3,8 @@
 import { useState, useRef } from 'react';
 import Image from 'next/image';
 import styles from './Home.module.css';
+// import Link from 'next/link';
+// import MatchingGame from './pages/matching';
 
 // Define the interface for each pair in the categories
 interface Pair {
@@ -269,6 +271,16 @@ const BodyPairs: Pair[] = [
     audioOff: '/ear.wav' 
   },
   { 
+    english: 'tooth', 
+    slovenian: 'zob', 
+    imgOn: '/zob.png', 
+    imgOff: '/zob.png', 
+    textOn: 'zob', 
+    textOff: 'tooth',
+    audioOn: '/zob.wav', 
+    audioOff: '/tooth.wav' 
+  },
+  { 
     english: 'eye', 
     slovenian: 'oko', 
     imgOn: '/oko.png', 
@@ -361,7 +373,6 @@ const OppositePairs = [
   //   audioOff: '/usta.wav' 
   // },
 ];
-
 export default function Home() {
   const [currentCategory, setCurrentCategory] = useState<Pair[]>(AnimalsPairs);
   const [currentPairIndex, setCurrentPairIndex] = useState(0);
@@ -371,7 +382,6 @@ export default function Home() {
 
   const playAudio = async (audioSource: string) => {
     if (audioRef.current instanceof HTMLAudioElement) {
-      // Pause and reset audio first to avoid interruption errors
       audioRef.current.pause();
       audioRef.current.src = audioSource;
       audioRef.current.volume = volume;
@@ -397,7 +407,7 @@ export default function Home() {
     setIsOnState(true);
     setCurrentPairIndex((prevIndex) => {
       const newIndex = (prevIndex + 1) % currentCategory.length;
-      playAudio(currentCategory[newIndex].audioOn); // Play the audio for the new pair
+      playAudio(currentCategory[newIndex].audioOn);
       return newIndex;
     });
   };
@@ -406,7 +416,7 @@ export default function Home() {
     setIsOnState(true);
     setCurrentPairIndex((prevIndex) => {
       const newIndex = (prevIndex - 1 + currentCategory.length) % currentCategory.length;
-      playAudio(currentCategory[newIndex].audioOn); // Play the audio for the new pair
+      playAudio(currentCategory[newIndex].audioOn);
       return newIndex;
     });
   };
@@ -423,7 +433,6 @@ export default function Home() {
     setCurrentCategory(categoryPairs);
     setCurrentPairIndex(0);
     setIsOnState(true);
-    // Play the first audio of the selected category
     playAudio(categoryPairs[0].audioOn);
   };
 
@@ -432,7 +441,6 @@ export default function Home() {
 
   return (
     <div className={styles.container}>
-      {/* Header with learn.png */}
       <header className={styles.header}>
         <Image
           src="/learn.png"
@@ -457,7 +465,6 @@ export default function Home() {
         </button>
       </div>
 
-      {/* Main Content */}
       {currentPair && (
         <div className={styles.card} onClick={toggleImage}>
           <Image
@@ -471,7 +478,6 @@ export default function Home() {
         </div>
       )}
 
-      {/* Navigation Buttons */}
       <div className={styles.navigationButtons}>
         <button onClick={goToPreviousPair} className={styles.navButton}>
           <Image src="/prev.png" alt="Previous" width={120} height={120} />
@@ -481,7 +487,6 @@ export default function Home() {
         </button>
       </div>
 
-      {/* Volume Control Slider */}
       <div className={styles.volumeControl}>
         <label>Volume:</label>
         <input
@@ -494,8 +499,14 @@ export default function Home() {
         />
       </div>
 
-      {/* Audio Element */}
       <audio ref={audioRef} />
+      {/* <div className={styles.matchingGameLink}>
+  <Link href="/matching">
+    <button className={styles.matchingGameButton}>
+      Go to Matching Game
+    </button>
+  </Link>
+</div> */}
     </div>
   );
 }
