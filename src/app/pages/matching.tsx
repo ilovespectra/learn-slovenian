@@ -47,7 +47,7 @@ export default function MatchingGame() {
     // Select two additional random pairs for the options
     const shuffledPairs = [...AnimalsPairs].sort(() => 0.5 - Math.random());
     const options = [correctPair, ...shuffledPairs.filter(pair => pair !== correctPair).slice(0, 2)];
-    setOptions(options.sort(() => 0.5 - Math.random())); // Shuffle the options
+    setOptions(options.sort(() => 0.5 - Math.random())); 
 
     // Reset the feedback state
     setIsCorrect(null);
