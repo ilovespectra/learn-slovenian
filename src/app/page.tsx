@@ -384,7 +384,9 @@ export default function Home() {
     if (audioRef.current instanceof HTMLAudioElement) {
       audioRef.current.pause();
       audioRef.current.src = audioSource;
-      audioRef.current.volume = volume;
+
+      const amplifiedVolume = Math.min(volume * 2, 1.0);
+      audioRef.current.volume = amplifiedVolume;
       
       try {
         await audioRef.current.load();
